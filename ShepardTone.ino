@@ -1,7 +1,7 @@
 /*
  * teensyduino program to play a Shepard-Risset tone - this is a slowly rising glissando which fades in gently & out again, so it always sounds like it's ascending
  * also known as the 'barber-pole' illusion. 
- * odd error where it occasionally gets some distortion. not sure where this comes from. 
+ * 
  */
 
 #include <Audio.h>
@@ -55,16 +55,16 @@ AudioConnection          patchCord18(mixer2, 0, i2s1, 1);
 AudioControlSGTL5000 audioShield;
 
 float toneVol = 0.1;
-int startFreq = 220;
+int startFreq = 440;
 int endFreq = 880; // swap these to go down
 int riseTime = 5;  // actually in secs
 int ribbons = 8; // number of tones
 int fadeTime = riseTime * 1000 / ribbons * 2; // * 2 is kludge as sounds better
 
 void setup() {
-  AudioMemory(8);
+  AudioMemory(256);
   audioShield.enable();
-  audioShield.volume(0.45);
+  audioShield.volume(0.6);
 
 }
 
